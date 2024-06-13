@@ -1,7 +1,6 @@
 package com.example.mines_sweeper.controller;
 
-import com.example.mines_sweeper.gridLogic.Level1_Grid;
-import com.example.mines_sweeper.gridLogic.logic;
+import com.example.mines_sweeper.gridLogic.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +13,7 @@ import java.util.ResourceBundle;
 public class level1_controller implements Initializable {
 
     private Level1_Grid level1Grid;
+    private Timer timer;
     private int clickedRow,clickedCol;
     private boolean isGameOver;
     private boolean firstClick;
@@ -24,6 +24,7 @@ public class level1_controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Generate the grid with bomb
         level1Grid = new Level1_Grid();
+        timer = new Timer();
         firstClick = true;
         isGameOver = false;
         level1Grid.displayGrid();
@@ -31,11 +32,9 @@ public class level1_controller implements Initializable {
     @FXML
     public void tilesClicked(ActionEvent event){
 
-        // if game over or the tile is clicked
+
+        // if game over
         if(isGameOver) return;
-        if(level1Grid.isTileClicked(clickedRow,clickedCol)){
-            return;
-        }
 
 
         Button clickedButton = (Button) event.getSource();
@@ -43,10 +42,19 @@ public class level1_controller implements Initializable {
         clickedRow = id.charAt(7) - '1';
         clickedCol = id.charAt(8) - '1';
 
+        if(level1Grid.isTileClicked(clickedRow,clickedCol)){
+            System.out.println("already clicked");
+            return;
+        }
+
         // after the first click if it found bomb then switch it somewhere else in the same row
-        if(firstClick && level1Grid.isContainsBomb(clickedRow,clickedCol)){
-            level1Grid.changeBombPosition(clickedRow,clickedCol);
-            firstClick = false;
+        if(firstClick){
+            if(level1Grid.isContainsBomb(clickedRow,clickedCol)){
+                level1Grid.changeBombPosition(clickedRow,clickedCol);
+            }
+            timer.start();
+            // show the grids which number is 0
+            level1Grid.zeroClearingTile(gridPane,clickedRow,clickedCol);
         }
 
         if(level1Grid.isContainsBomb(clickedRow,clickedCol)){
@@ -60,22 +68,22 @@ public class level1_controller implements Initializable {
             level1Grid.changeTileUnclicked(clickedRow,clickedCol);
         }
         else {
-            String color = logic.generateRandomColor();
-            String css = "-fx-background-color: transparent;" +
-                    "-fx-font-size:44px;-fx-font-weight:bold;" +
-                    "-fx-text-fill:"+color+";";
-            clickedButton.setStyle(css);
-
+            // valid tile clicked
             level1Grid.incrementSaveClicked();
-            int number = level1Grid.getGridNumber(clickedRow,clickedCol);
-            clickedButton.setText(String.valueOf(number));
+            level1Grid.setTextOnButton(clickedButton,clickedRow,clickedCol);
         }
 
         // checking for win
         if(level1Grid.checkForWon()){
             System.out.println("You won!!!");
             // count the time
+            timer.stop();
+            System.out.println("Time : "+timer.getElapsedTime());
+            isGameOver = true;
             // save it in a file further with name
+
         }
+        firstClick = false;
+        level1Grid.displayGrid();
     }
 }

@@ -1,5 +1,7 @@
 package com.example.mines_sweeper.gridLogic;
 
+import javafx.scene.control.Button;
+
 import java.util.Random;
 
 public abstract class logic {
@@ -7,6 +9,10 @@ public abstract class logic {
     static int clicked = 1;
     static int bomb = 2;
     static int flagged = 3;
+
+    public static String transparent = "-fx-background-color: transparent;";
+    public static String boldNumber = "-fx-font-size:44px;-fx-font-weight:bold;";
+
 
     public static int[][] generateRandomBombPosition(int size) {
         int[][] grid = new int[size][size];
@@ -51,6 +57,23 @@ public abstract class logic {
         }
 
         return gridNumbers;
+    }
+    public static void cssButtonNumbers(Button button){
+        String color = logic.generateRandomColor();
+        String css = logic.transparent + logic.boldNumber +
+                "-fx-text-fill:"+color+";";
+        button.setStyle(css);
+    }
+
+    public static int generateNewRandomPosition(int size,int prePos){
+
+        Random random = new Random();
+        int newPos;
+        do{
+            newPos = random.nextInt(size);
+        }while(newPos == prePos);
+
+        return newPos;
     }
     public static String generateRandomColor(){
         String color = "";

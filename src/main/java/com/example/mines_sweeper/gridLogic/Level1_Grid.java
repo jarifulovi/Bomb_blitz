@@ -1,8 +1,10 @@
 package com.example.mines_sweeper.gridLogic;
 
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import org.kordamp.ikonli.javafx.FontIcon;
 
+import java.util.List;
 import java.util.Random;
 
 public class Level1_Grid {
@@ -18,15 +20,8 @@ public class Level1_Grid {
     }
 
     public void changeBombPosition(int row,int col){
-        // generate a random value [0 to col-1] or [col+1,size-1]
-        Random random = new Random();
-        int newCol;
 
-        // Generates random until it's a new position
-        do{
-            newCol = random.nextInt(size);
-        }while(col == newCol);
-
+        int newCol = logic.generateNewRandomPosition(size,col);
 
         grid[row][col] = logic.unClicked;
         grid[row][newCol] = logic.bomb;
@@ -36,6 +31,37 @@ public class Level1_Grid {
     }
     private void generateGrid(){
         grid = logic.generateRandomBombPosition(size);
+        gridNumbers = logic.generateGridNumbers(size,grid);
+    }
+    public void zeroClearingTile(GridPane gridPane,int row,int col){
+        // first check if it is 0
+        if(gridNumbers[row][col] == 0){
+            // get all the adjacent row,col
+
+            List<int[]> adjacentZero = AdjacentZeroUtil.findAdjacentZeros(gridNumbers,row,col,size);
+
+            // get the buttons on that position
+            Button[] adjacentZeroButtons = AdjacentZeroUtil.getButtons(gridPane,adjacentZero);
+
+
+            for(int i=0;i<adjacentZeroButtons.length;i++){
+                setTextOnButton(adjacentZeroButtons[i],adjacentZero.get(i)[0],adjacentZero.get(i)[1]);
+            }
+            // make all the buttons clicked
+            for(int[] coordinate : adjacentZero){
+
+                grid[coordinate[0]][coordinate[1]] = logic.clicked;
+                System.out.println("Row : "+coordinate[0]+" col : "+coordinate[1]);
+                incrementSaveClicked();
+            }
+
+        }
+    }
+    public void setTextOnButton(Button button,int row,int col){
+
+        logic.cssButtonNumbers(button);
+        int number = getGridNumber(row,col);
+        button.setText(String.valueOf(number));
     }
     public int getGridNumber(int row,int col){
         return gridNumbers[row][col];
