@@ -1,29 +1,23 @@
 package com.example.mines_sweeper.controller;
 
-import com.example.mines_sweeper.gridLogic.*;
-import com.example.mines_sweeper.mainApplication;
+import com.example.mines_sweeper.gridLogic.Level1_Grid;
+import com.example.mines_sweeper.gridLogic.Level2_Grid;
+import com.example.mines_sweeper.gridLogic.Timer;
+import com.example.mines_sweeper.gridLogic.logic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class level1_controller implements Initializable {
+public class Level2_Controller implements Initializable {
 
-    private Level1_Grid level1Grid;
+    private Level2_Grid level2Grid;
     private Timer timer;
-
-    private final int level = 1;
+    private final int level = 2;
     private int clickedRow,clickedCol;
     private boolean isGameOver;
     private boolean firstClick;
@@ -33,12 +27,14 @@ public class level1_controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Generate the grid with bomb
-        level1Grid = new Level1_Grid();
+        level2Grid = new Level2_Grid();
         timer = new Timer();
         firstClick = true;
         isGameOver = false;
-        level1Grid.displayGrid();
+        level2Grid.displayGrid();
     }
+
+
     @FXML
     public void tilesClicked(ActionEvent event){
 
@@ -51,11 +47,11 @@ public class level1_controller implements Initializable {
 
         assert clickedButton != null;
         String id = clickedButton.getId();
-        clickedRow = id.charAt(7) - '1';
-        clickedCol = id.charAt(8) - '1';
+        clickedRow = id.charAt(7) - '0';
+        clickedCol = id.charAt(8) - '0';
 
 
-        if(level1Grid.isTileClicked(clickedRow,clickedCol)){
+        if(level2Grid.isTileClicked(clickedRow,clickedCol)){
             System.out.println("already clicked");
             return;
         }
@@ -63,14 +59,14 @@ public class level1_controller implements Initializable {
 
         if(firstClick){
             timer.start();
-            if(level1Grid.isContainsBomb(clickedRow,clickedCol)){
-                level1Grid.changeBombPosition(clickedRow,clickedCol);
+            if(level2Grid.isContainsBomb(clickedRow,clickedCol)){
+                level2Grid.changeBombPosition(clickedRow,clickedCol);
             }
 
-            level1Grid.zeroClearingTile(gridPane,clickedRow,clickedCol);
+            level2Grid.zeroClearingTile(gridPane,clickedRow,clickedCol);
         }
 
-        if(level1Grid.isContainsBomb(clickedRow,clickedCol)){
+        if(level2Grid.isContainsBomb(clickedRow,clickedCol)){
             System.out.println("bomb!!");
             isGameOver = true;
             // display all the bombs
@@ -79,19 +75,19 @@ public class level1_controller implements Initializable {
             // load the lose panel fxml
             logic.loadFxmlModal("losePanel.fxml",event,level,timer.getElapsedTime());
         }
-        else if(level1Grid.isTileFLagged(clickedRow,clickedCol)){
-            level1Grid.changeTileUnclicked(clickedRow,clickedCol);
+        else if(level2Grid.isTileFLagged(clickedRow,clickedCol)){
+            level2Grid.changeTileUnclicked(clickedRow,clickedCol);
         }
         else {
             // valid tile clicked
 
-            level1Grid.incrementSaveClicked();
-            level1Grid.changeTileClicked(clickedRow,clickedCol);
-            level1Grid.setTextOnButton(clickedButton,clickedRow,clickedCol);
+            level2Grid.incrementSaveClicked();
+            level2Grid.changeTileClicked(clickedRow,clickedCol);
+            level2Grid.setTextOnButton(clickedButton,clickedRow,clickedCol);
         }
 
         // checking for win
-        if(level1Grid.checkForWon()){
+        if(level2Grid.checkForWon()){
             System.out.println("You won!!!");
             // count the time
             timer.stop();
@@ -102,7 +98,7 @@ public class level1_controller implements Initializable {
 
         }
         firstClick = false;
-        level1Grid.displayGrid();
+        level2Grid.displayGrid();
     }
 
 }

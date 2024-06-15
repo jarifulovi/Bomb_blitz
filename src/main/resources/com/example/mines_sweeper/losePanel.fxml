@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="losePanelAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mines_sweeper.controller.LosePanel_Controller">
+   <children>
+      <Label layoutX="132.0" layoutY="56.0" prefHeight="75.0" prefWidth="135.0" text="YOU LOSE">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <Button fx:id="losePanelPGButton" layoutX="85.0" layoutY="219.0" mnemonicParsing="false" onAction="#playAgain" prefHeight="32.0" prefWidth="89.0" text="Play again">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="losePanelExitButton" layoutX="225.0" layoutY="219.0" mnemonicParsing="false" onAction="#exit" prefHeight="32.0" prefWidth="89.0" text="Exit">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

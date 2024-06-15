@@ -1,7 +1,19 @@
 package com.example.mines_sweeper.gridLogic;
 
+import com.example.mines_sweeper.controller.LosePanel_Controller;
+import com.example.mines_sweeper.controller.WinPanel_Controller;
+import com.example.mines_sweeper.mainApplication;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Random;
 
 public abstract class logic {
@@ -76,7 +88,7 @@ public abstract class logic {
         return newPos;
     }
     public static String generateRandomColor(){
-        String color = "";
+
         Random random = new Random();
         int value = random.nextInt(5);
 
@@ -87,4 +99,47 @@ public abstract class logic {
         else                return "black";
 
     }
+
+    // ********** Loading fxml methods ****************
+
+    public static void loadFxml(String fxmlFile, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(mainApplication.class.getResource(fxmlFile));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Bomb Blitz");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void loadFxmlModal(String fxmlFile,ActionEvent event,int lvl,double time){
+        try {
+            FXMLLoader loader = new FXMLLoader(mainApplication.class.getResource(fxmlFile));
+            Parent root = loader.load();
+
+
+            if(fxmlFile.equals("losePanel.fxml")) {
+                LosePanel_Controller losePanelController = loader.getController();
+                losePanelController.setLevel(lvl);
+            }
+            else if(fxmlFile.equals("winPanel.fxml")){
+                WinPanel_Controller winPanelController = loader.getController();
+                winPanelController.setInit(lvl,time);
+            }
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Bomb Blitz");
+
+            // Show the panel as a dialog
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

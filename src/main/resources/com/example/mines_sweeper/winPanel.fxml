@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="winPanelAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mines_sweeper.controller.WinPanel_Controller">
+   <children>
+      <Label fx:id="you_won_label" layoutX="132.0" layoutY="37.0" prefHeight="75.0" prefWidth="135.0" text="YOU WON" textFill="#8b1b1b">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="77.0" layoutY="133.0" prefHeight="30.0" prefWidth="130.0" text="Time taken : " textFill="#7d0a0a">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="77.0" layoutY="174.0" prefHeight="30.0" prefWidth="120.0" text="Your name :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nameField" layoutX="200.0" layoutY="177.0" onAction="#nameEntered" />
+      <Label fx:id="timeLabel" layoutX="200.0" layoutY="133.0" prefHeight="30.0" prefWidth="79.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

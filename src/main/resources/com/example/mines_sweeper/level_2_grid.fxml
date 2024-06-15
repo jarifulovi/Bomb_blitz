@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mines_sweeper.controller.Level2_Controller">
+   <children>
+      <MenuBar layoutY="2.0" prefHeight="30.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <GridPane fx:id="gridPane" layoutY="32.0" prefHeight="500.0" prefWidth="600.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+             <!-- Column 0 -->
+             <Button fx:id="level2_00" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+             <Button fx:id="level2_10" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+             <Button fx:id="level2_20" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+             <Button fx:id="level2_30" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+             <Button fx:id="level2_40" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+             <Button fx:id="level2_50" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+             <Button fx:id="level2_60" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="6" GridPane.columnIndex="0" />
+             <Button fx:id="level2_70" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="7" GridPane.columnIndex="0" />
+             <Button fx:id="level2_80" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="8" GridPane.columnIndex="0" />
+             <Button fx:id="level2_90" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="9" GridPane.columnIndex="0" />
+
+             <!-- Column 1 -->
+             <Button fx:id="level2_01" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+             <Button fx:id="level2_11" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+             <Button fx:id="level2_21" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+             <Button fx:id="level2_31" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+             <Button fx:id="level2_41" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+             <Button fx:id="level2_51" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+             <Button fx:id="level2_61" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+             <Button fx:id="level2_71" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="7" GridPane.columnIndex="1" />
+             <Button fx:id="level2_81" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="8" GridPane.columnIndex="1" />
+             <Button fx:id="level2_91" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="9" GridPane.columnIndex="1" />
+
+             <!-- Column 2 -->
+             <Button fx:id="level2_02" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+             <Button fx:id="level2_12" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+             <Button fx:id="level2_22" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+             <Button fx:id="level2_32" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="3" GridPane.columnIndex="2" />
+             <Button fx:id="level2_42" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="4" GridPane.columnIndex="2" />
+             <Button fx:id="level2_52" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="5" GridPane.columnIndex="2" />
+             <Button fx:id="level2_62" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="6" GridPane.columnIndex="2" />
+             <Button fx:id="level2_72" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="7" GridPane.columnIndex="2" />
+             <Button fx:id="level2_82" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="8" GridPane.columnIndex="2" />
+             <Button fx:id="level2_92" mnemonicParsing="false" onAction="#tilesClicked" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="9" GridPane.columnIndex="2" />
+
+
+             <!-- Column 3 -->
+             <Button fx:id="level2_03" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="0" GridPane.columnIndex="3" onAction="#tilesClicked"/>
+             <Button fx:id="level2_13" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="1" GridPane.columnIndex="3" onAction="#tilesClicked"/>
+             <Button fx:id="level2_23" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="2" GridPane.columnIndex="3" onAction="#tilesClicked"/>
+             <Button fx:id="level2_33" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="3" GridPane.columnIndex="3" onAction="#tilesClicked"/>
+             <Button fx:id="level2_43" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="4" GridPane.columnIndex="3" onAction="#tilesClicked"/>
+             <Button fx:id="level2_53" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="5" GridPane.columnIndex="3" onAction="#tilesClicked"/>
+             <Button fx:id="level2_63" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="6" GridPane.columnIndex="3" onAction="#tilesClicked"/>
+             <Button fx:id="level2_73" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="7" GridPane.columnIndex="3" onAction="#tilesClicked"/>
+             <Button fx:id="level2_83" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="8" GridPane.columnIndex="3" onAction="#tilesClicked"/>
+             <Button fx:id="level2_93" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="9" GridPane.columnIndex="3" onAction="#tilesClicked"/>
+
+
+             <!-- Column 4 -->
+             <Button fx:id="level2_04" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="0" GridPane.columnIndex="4" onAction="#tilesClicked"/>
+             <Button fx:id="level2_14" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="1" GridPane.columnIndex="4" onAction="#tilesClicked"/>
+             <Button fx:id="level2_24" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="2" GridPane.columnIndex="4" onAction="#tilesClicked"/>
+             <Button fx:id="level2_34" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="3" GridPane.columnIndex="4" onAction="#tilesClicked"/>
+             <Button fx:id="level2_44" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="4" GridPane.columnIndex="4" onAction="#tilesClicked"/>
+             <Button fx:id="level2_54" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="5" GridPane.columnIndex="4" onAction="#tilesClicked"/>
+             <Button fx:id="level2_64" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="6" GridPane.columnIndex="4" onAction="#tilesClicked"/>
+             <Button fx:id="level2_74" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="7" GridPane.columnIndex="4" onAction="#tilesClicked"/>
+             <Button fx:id="level2_84" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="8" GridPane.columnIndex="4" onAction="#tilesClicked"/>
+             <Button fx:id="level2_94" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="9" GridPane.columnIndex="4" onAction="#tilesClicked"/>
+
+
+             <!-- Column 5 -->
+             <Button fx:id="level2_05" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="0" GridPane.columnIndex="5" onAction="#tilesClicked"/>
+             <Button fx:id="level2_15" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="1" GridPane.columnIndex="5" onAction="#tilesClicked"/>
+             <Button fx:id="level2_25" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="2" GridPane.columnIndex="5" onAction="#tilesClicked"/>
+             <Button fx:id="level2_35" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="3" GridPane.columnIndex="5" onAction="#tilesClicked"/>
+             <Button fx:id="level2_45" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="4" GridPane.columnIndex="5" onAction="#tilesClicked"/>
+             <Button fx:id="level2_55" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="5" GridPane.columnIndex="5" onAction="#tilesClicked"/>
+             <Button fx:id="level2_65" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="6" GridPane.columnIndex="5" onAction="#tilesClicked"/>
+             <Button fx:id="level2_75" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="7" GridPane.columnIndex="5" onAction="#tilesClicked"/>
+             <Button fx:id="level2_85" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="8" GridPane.columnIndex="5" onAction="#tilesClicked"/>
+             <Button fx:id="level2_95" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="9" GridPane.columnIndex="5" onAction="#tilesClicked"/>
+
+
+             <!-- Column 6 -->
+             <Button fx:id="level2_06" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="0" GridPane.columnIndex="6" onAction="#tilesClicked"/>
+             <Button fx:id="level2_16" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="1" GridPane.columnIndex="6" onAction="#tilesClicked"/>
+             <Button fx:id="level2_26" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="2" GridPane.columnIndex="6" onAction="#tilesClicked"/>
+             <Button fx:id="level2_36" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="3" GridPane.columnIndex="6" onAction="#tilesClicked"/>
+             <Button fx:id="level2_46" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="4" GridPane.columnIndex="6" onAction="#tilesClicked"/>
+             <Button fx:id="level2_56" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="5" GridPane.columnIndex="6" onAction="#tilesClicked"/>
+             <Button fx:id="level2_66" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="6" GridPane.columnIndex="6" onAction="#tilesClicked"/>
+             <Button fx:id="level2_76" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="7" GridPane.columnIndex="6" onAction="#tilesClicked"/>
+             <Button fx:id="level2_86" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="8" GridPane.columnIndex="6" onAction="#tilesClicked"/>
+             <Button fx:id="level2_96" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="9" GridPane.columnIndex="6" onAction="#tilesClicked"/>
+
+
+
+             <!-- Column 7 -->
+             <Button fx:id="level2_07" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="0" GridPane.columnIndex="7" onAction="#tilesClicked"/>
+             <Button fx:id="level2_17" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="1" GridPane.columnIndex="7" onAction="#tilesClicked"/>
+             <Button fx:id="level2_27" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="2" GridPane.columnIndex="7" onAction="#tilesClicked"/>
+             <Button fx:id="level2_37" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="3" GridPane.columnIndex="7" onAction="#tilesClicked"/>
+             <Button fx:id="level2_47" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="4" GridPane.columnIndex="7" onAction="#tilesClicked"/>
+             <Button fx:id="level2_57" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="5" GridPane.columnIndex="7" onAction="#tilesClicked"/>
+             <Button fx:id="level2_67" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="6" GridPane.columnIndex="7" onAction="#tilesClicked"/>
+             <Button fx:id="level2_77" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="7" GridPane.columnIndex="7" onAction="#tilesClicked"/>
+             <Button fx:id="level2_87" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="8" GridPane.columnIndex="7" onAction="#tilesClicked"/>
+             <Button fx:id="level2_97" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="9" GridPane.columnIndex="7" onAction="#tilesClicked"/>
+
+
+             <!-- Column 8 -->
+             <Button fx:id="level2_08" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="0" GridPane.columnIndex="8" onAction="#tilesClicked"/>
+             <Button fx:id="level2_18" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="1" GridPane.columnIndex="8" onAction="#tilesClicked"/>
+             <Button fx:id="level2_28" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="2" GridPane.columnIndex="8" onAction="#tilesClicked"/>
+             <Button fx:id="level2_38" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="3" GridPane.columnIndex="8" onAction="#tilesClicked"/>
+             <Button fx:id="level2_48" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="4" GridPane.columnIndex="8" onAction="#tilesClicked"/>
+             <Button fx:id="level2_58" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="5" GridPane.columnIndex="8" onAction="#tilesClicked"/>
+             <Button fx:id="level2_68" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="6" GridPane.columnIndex="8" onAction="#tilesClicked"/>
+             <Button fx:id="level2_78" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="7" GridPane.columnIndex="8" onAction="#tilesClicked"/>
+             <Button fx:id="level2_88" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="8" GridPane.columnIndex="8" onAction="#tilesClicked"/>
+             <Button fx:id="level2_98" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="9" GridPane.columnIndex="8" onAction="#tilesClicked"/>
+
+
+             <!-- Column 9 -->
+             <Button fx:id="level2_09" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="0" GridPane.columnIndex="9" onAction="#tilesClicked"/>
+             <Button fx:id="level2_19" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="1" GridPane.columnIndex="9" onAction="#tilesClicked"/>
+             <Button fx:id="level2_29" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="2" GridPane.columnIndex="9" onAction="#tilesClicked"/>
+             <Button fx:id="level2_39" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="3" GridPane.columnIndex="9" onAction="#tilesClicked"/>
+             <Button fx:id="level2_49" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="4" GridPane.columnIndex="9" onAction="#tilesClicked"/>
+             <Button fx:id="level2_59" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="5" GridPane.columnIndex="9" onAction="#tilesClicked"/>
+             <Button fx:id="level2_69" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="6" GridPane.columnIndex="9" onAction="#tilesClicked"/>
+             <Button fx:id="level2_79" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="7" GridPane.columnIndex="9" onAction="#tilesClicked"/>
+             <Button fx:id="level2_89" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="8" GridPane.columnIndex="9" onAction="#tilesClicked"/>
+             <Button fx:id="level2_99" mnemonicParsing="false" prefHeight="57.0" prefWidth="60.0" GridPane.rowIndex="9" GridPane.columnIndex="9" onAction="#tilesClicked"/>
+
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
