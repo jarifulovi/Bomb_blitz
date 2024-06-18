@@ -3,27 +3,40 @@ package com.example.mines_sweeper.gridLogic;
 import com.example.mines_sweeper.controller.LosePanel_Controller;
 import com.example.mines_sweeper.controller.WinPanel_Controller;
 import com.example.mines_sweeper.mainApplication;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Random;
 
 public abstract class logic {
-    static int unClicked = 0;
-    static int clicked = 1;
-    static int bomb = 2;
-    static int flagged = 3;
+    public static int unClicked = 0;
+    public static int clicked = 1;
+    public static int bomb = 2;
+    public static int flagged = 3;
+
+    public static String LEVEL1FXML = "level_1_grid.fxml";
+    public static String LEVEL2FXML = "level_2_grid.fxml";
+    public static String LEVEL3FXML = "level_3_grid.fxml";
+    public static String LOSEPANEL = "losePanel.fxml";
+    public static String WINPANEL = "winPanel.fxml";
+    public static String MAINPAGE = "mainPage.fxml";
 
     public static String transparent = "-fx-background-color: transparent;";
-    public static String boldNumber = "-fx-font-size:44px;-fx-font-weight:bold;";
+    public static String boldNumber = "-fx-font-weight:bold;";
 
 
     public static int[][] generateRandomBombPosition(int size) {
@@ -70,10 +83,15 @@ public abstract class logic {
 
         return gridNumbers;
     }
-    public static void cssButtonNumbers(Button button){
+    public static void cssButtonNumbers(Button button,int size){
         String color = logic.generateRandomColor();
-        String css = logic.transparent + logic.boldNumber +
-                "-fx-text-fill:"+color+";";
+        double fontSize;
+
+        if(size == 5)       fontSize = 48;
+        else if(size == 10) fontSize = 12;
+        else                fontSize = 12;
+
+        String css = String.format("-fx-text-fill: %s; -fx-font-size: %.1fpt;%s%s", color, fontSize,logic.boldNumber,logic.transparent);
         button.setStyle(css);
     }
 
@@ -141,5 +159,6 @@ public abstract class logic {
             e.printStackTrace();
         }
     }
+
 
 }

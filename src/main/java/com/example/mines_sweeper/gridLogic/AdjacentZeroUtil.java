@@ -10,6 +10,9 @@ import java.util.List;
 
 public abstract class AdjacentZeroUtil {
 
+    // The fxml for each level must be designed by row-wise
+    // meaning first add all column buttons for each row
+
     public static List<int[]> findAdjacentZeros(int[][] gridNumbers, int row, int col, int size) {
         List<int[]> adjacentZeros = new ArrayList<>();
         boolean[][] visited = new boolean[size][size];
@@ -51,6 +54,7 @@ public abstract class AdjacentZeroUtil {
 
     public static Button[] getButtons(GridPane gridPane, List<int[]> coordinates) {
         ObservableList<Node> children = gridPane.getChildren();
+
 
         // Create an array to store the buttons
         Button[] buttons = new Button[coordinates.size()];

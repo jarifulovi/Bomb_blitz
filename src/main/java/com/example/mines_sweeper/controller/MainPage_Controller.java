@@ -21,13 +21,13 @@ public class MainPage_Controller implements Initializable {
 
 
     public void button1Clicked(ActionEvent event){
-        logic.loadFxml("level_1_grid.fxml",event);
+        logic.loadFxml(logic.LEVEL1FXML,event);
     }
     public void button2Clicked(ActionEvent event){
-        logic.loadFxml("level_2_grid.fxml",event);
+        logic.loadFxml(logic.LEVEL2FXML,event);
     }
     public void button3Clicked(ActionEvent event){
-        System.out.println("button 3 clicked");
+        logic.loadFxml(logic.LEVEL3FXML,event);
     }
 
 
