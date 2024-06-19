@@ -49,6 +49,12 @@ public abstract class AdjacentZeroUtil {
         exploreAdjacent(gridNumbers, row + 1, col, size, visited, adjacentZeros, firstClickedRow, firstClickedCol); // Down
         exploreAdjacent(gridNumbers, row, col - 1, size, visited, adjacentZeros, firstClickedRow, firstClickedCol); // Left
         exploreAdjacent(gridNumbers, row, col + 1, size, visited, adjacentZeros, firstClickedRow, firstClickedCol); // Right
+
+        exploreAdjacent(gridNumbers, row - 1, col - 1, size, visited, adjacentZeros, firstClickedRow, firstClickedCol); // Up-Left
+        exploreAdjacent(gridNumbers, row - 1, col + 1 , size, visited, adjacentZeros, firstClickedRow, firstClickedCol); // Up-Right
+        exploreAdjacent(gridNumbers, row + 1, col - 1, size, visited, adjacentZeros, firstClickedRow, firstClickedCol); // Down-Left
+        exploreAdjacent(gridNumbers, row + 1, col + 1, size, visited, adjacentZeros, firstClickedRow, firstClickedCol); // Down-Right
+
     }
 
 

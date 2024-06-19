@@ -3,12 +3,15 @@ package com.example.mines_sweeper.controller;
 import com.example.mines_sweeper.gridLogic.Grid.Level2_Level_Grid;
 import com.example.mines_sweeper.gridLogic.Grid.Level3_Level_Grid;
 import com.example.mines_sweeper.gridLogic.Grid.Level_Grid;
+import com.example.mines_sweeper.gridLogic.MenuManager;
 import com.example.mines_sweeper.gridLogic.Timer;
 import com.example.mines_sweeper.gridLogic.logic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
@@ -17,19 +20,22 @@ import java.util.ResourceBundle;
 public class Level3_Controller implements Initializable {
 
     public Level_Grid levelGrid;
+    private MenuManager menuManager;
     public Timer timer;
-    public int level;
+    public int level = 3;
     public int clickedRow,clickedCol;
     public boolean isGameOver;
     public boolean firstClick;
     @FXML
     public GridPane gridPane;
+    @FXML
+    public MenuBar gridMenu;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Generate the grid with bomb
         levelGrid = new Level3_Level_Grid();
-        level = 3;
+        menuManager = new MenuManager(gridMenu,level);
         timer = new Timer();
         firstClick = true;
         isGameOver = false;

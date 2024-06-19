@@ -3,6 +3,7 @@ module com.example.mines_sweeper {
     requires javafx.graphics;
     requires java.base;
     requires javafx.fxml;
+    requires javafx.media;
 
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.ikonli.core;

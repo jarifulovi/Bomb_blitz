@@ -8,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -19,6 +21,7 @@ import java.util.ResourceBundle;
 public class Level1_Controller implements Initializable {
 
     private Level_Grid levelGrid;
+    private MenuManager menuManager;
     private Timer timer;
 
     private final int level = 1;
@@ -27,11 +30,15 @@ public class Level1_Controller implements Initializable {
     private boolean firstClick;
     @FXML
     public GridPane gridPane;
+    @FXML
+    public MenuBar gridMenu;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Generate the grid with bomb
         levelGrid = new Level1_Level_Grid();
+        menuManager = new MenuManager(gridMenu,level);
         timer = new Timer();
         firstClick = true;
         isGameOver = false;

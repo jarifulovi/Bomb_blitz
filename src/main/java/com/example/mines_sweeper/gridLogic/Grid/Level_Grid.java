@@ -113,6 +113,8 @@ public class Level_Grid {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        logic.bombSound();
     }
 
     public void setFlagImage(GridPane gridPane,int row,int col){

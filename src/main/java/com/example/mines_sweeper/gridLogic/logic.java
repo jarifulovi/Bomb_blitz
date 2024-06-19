@@ -6,20 +6,21 @@ import com.example.mines_sweeper.mainApplication;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
+import javafx.scene.control.MenuItem;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Random;
 
 public abstract class logic {
@@ -117,6 +118,37 @@ public abstract class logic {
         else                return "black";
 
     }
+    public static void bombSound() {
+        String filePath = "/com/example/mines_sweeper/Sounds/mixkit-8-bit-bomb-explosion-2811.mp3";
+        InputStream inputStream = logic.class.getResourceAsStream(filePath);
+
+        if (inputStream != null) {
+            try {
+                // Convert InputStream to URI
+                URI uri = logic.class.getResource(filePath).toURI();
+
+                // Create Media object with URI
+                Media sound = new Media(uri.toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+                // Set volume (0.0 - 1.0)
+                mediaPlayer.setVolume(0.8);
+
+                // Optional: Handle when playback reaches the end
+                mediaPlayer.setOnEndOfMedia(mediaPlayer::stop);
+
+                // Play the sound
+                mediaPlayer.play();
+                System.out.println("sound");
+
+            } catch (URISyntaxException e) {
+                System.err.println("Error converting URI: " + e.getMessage());
+            }
+        } else {
+            System.out.println("File not found: " + filePath);
+        }
+    }
+
 
     // ********** Loading fxml methods ****************
 
@@ -126,6 +158,23 @@ public abstract class logic {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Bomb Blitz");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void loadFxmlMenu(String fxmlFile, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(mainApplication.class.getResource(fxmlFile));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            // Get the Stage from the MenuItem's Window
+            MenuItem menuItem = (MenuItem) event.getSource();
+            Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+
             stage.setScene(scene);
             stage.setTitle("Bomb Blitz");
             stage.show();
