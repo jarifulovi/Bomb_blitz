@@ -3,9 +3,12 @@ package com.example.mines_sweeper.gridLogic.Grid;
 import com.example.mines_sweeper.gridLogic.AdjacentZeroUtil;
 import com.example.mines_sweeper.gridLogic.logic;
 import javafx.animation.PauseTransition;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -15,6 +18,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -47,9 +51,11 @@ public class Level_Grid {
     }
     public void setTextOnButton(Button button, int row, int col){
 
+
         logic.cssButtonNumbers(button,size);
         int number = getGridNumber(row,col);
         button.setText(String.valueOf(number));
+
     }
 
     public int getGridNumber(int row,int col){
@@ -65,7 +71,6 @@ public class Level_Grid {
         return grid[row][col] == logic.flagged;
     }
 
-    // Didn't need right now
     public void changeTileClicked(int row,int col){
         grid[row][col] = logic.clicked;
     }
@@ -73,12 +78,18 @@ public class Level_Grid {
         grid[row][col] = logic.flagged;
         setFlagImage(gridPane,row,col);
     }
-    public void changeTileUnclicked(int row,int col){
-        grid[row][col] = logic.unClicked;
+    public void changeTileUnclicked(GridPane gridPane,int row,int col){
+
+        if(gridNumbers[row][col] == -1)
+            grid[row][col] = logic.bomb;
+        else
+            grid[row][col] = logic.unClicked;
+
+        unsetFlagImage(gridPane,row,col);
     }
 
     public void displayBombs(GridPane gridPane) {
-        String imagePath = "/com/example/mines_sweeper/Icons/bomb.png";
+        String imagePath = logic.BOMB_ICON;
         try {
             // Load bomb image
             Image bombImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
@@ -93,7 +104,7 @@ public class Level_Grid {
             for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++) {
                     if (isContainsBomb(i, j)) {
-                        System.out.println("row : "+i+" col : "+j);
+
                         // Create ImageView with the bomb image
                         ImageView imageView = new ImageView(bombImage);
                         imageView.setFitWidth(imageSize);
@@ -117,38 +128,68 @@ public class Level_Grid {
         logic.bombSound();
     }
 
-    public void setFlagImage(GridPane gridPane,int row,int col){
-
-        String imagePath = "/com/example/mines_sweeper/Icons/flag.png";
+    public void setFlagImage(GridPane gridPane, int row, int col) {
+        String imagePath = logic.FLAG_ICON;
         try {
-            // Load bomb image
-            Image bombImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
+            // Load flag image
+            Image flagImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
 
+            // Create a copy of the children list to avoid concurrent modification issues
+            List<Node> childrenCopy = new ArrayList<>(gridPane.getChildren());
 
-            double imageSize;
+            // Iterate over the copy of the children list
+            for (Node node : childrenCopy) {
+                Integer rowIndex = GridPane.getRowIndex(node);
+                Integer colIndex = GridPane.getColumnIndex(node);
+                if (rowIndex != null && colIndex != null && rowIndex == row && colIndex == col && node instanceof Button) {
+                    Button button = (Button) node;
+                    double width = button.getWidth();
+                    double height = button.getHeight();
 
-            if(size == 5)       imageSize = 80;
-            else if(size == 10) imageSize = 40;
-            else                imageSize = 20;
+                    // Create ImageView with the flag image
+                    ImageView imageView = new ImageView(flagImage);
+                    imageView.setFitWidth(width);
+                    imageView.setFitHeight(height);
 
+                    // Set the graphic of the button
+                    button.setGraphic(imageView);
 
-            // Create ImageView with the bomb image
-            ImageView imageView = new ImageView(bombImage);
-            imageView.setFitWidth(imageSize);
-            imageView.setFitHeight(imageSize);
+                    // Set preferred size of the button to match the image size
+                    button.setPrefSize(width, height);
+                    button.setMaxSize(width, height);
+                    button.setMinSize(width, height);
 
-            // Create StackPane to center the ImageView
-            StackPane stackPane = new StackPane();
-            stackPane.setAlignment(Pos.CENTER);
-            stackPane.getChildren().add(imageView);
-
-
-            // Add StackPane to GridPane at position (i, j)
-            gridPane.add(stackPane, row, col);
+                    // Ensure only the image is displayed
+                    button.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    return;
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+    public void unsetFlagImage(GridPane gridPane, int row, int col) {
+        try {
+
+            // Create a copy of the children list to avoid concurrent modification issues
+            List<Node> childrenCopy = new ArrayList<>(gridPane.getChildren());
+
+            // Iterate over the copy of the children list
+            for (Node node : childrenCopy) {
+                Integer rowIndex = GridPane.getRowIndex(node);
+                Integer colIndex = GridPane.getColumnIndex(node);
+                if (rowIndex != null && colIndex != null && rowIndex == row && colIndex == col && node instanceof Button button) {
+                    button.getGraphic().setVisible(false);
+                    return;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void bombAndLosePanelView(GridPane gp, ActionEvent e,int lvl,double time){
 

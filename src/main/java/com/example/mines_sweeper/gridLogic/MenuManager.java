@@ -9,7 +9,6 @@ import javafx.scene.control.MenuItem;
 public class MenuManager {
 
     // Set onAction on each controller and mainPage
-    // get parameter level or -1 for mainPage ( no new game option )
     private MenuBar menuBar;
     private int level;
 
@@ -40,8 +39,8 @@ public class MenuManager {
                     logic.loadFxmlMenu(logic.LEVEL3FXML,event);
 
                 break;
-            case "Sound" :
-                System.out.println("sounded");
+            case "High Score" :
+                logic.loadFxmlMenu(logic.HIGHSCORE,event);
                 break;
             case "Exit" :
                 Platform.exit();

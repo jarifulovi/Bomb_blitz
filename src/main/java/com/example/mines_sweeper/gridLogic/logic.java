@@ -4,6 +4,7 @@ import com.example.mines_sweeper.controller.LosePanel_Controller;
 import com.example.mines_sweeper.controller.WinPanel_Controller;
 import com.example.mines_sweeper.mainApplication;
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -35,9 +36,13 @@ public abstract class logic {
     public static String LOSEPANEL = "losePanel.fxml";
     public static String WINPANEL = "winPanel.fxml";
     public static String MAINPAGE = "mainPage.fxml";
-
+    public static String HIGHSCORE = "high_score.fxml";
+    public static String SCORE_DIRECTORY = "src/main/resources/com/example/mines_sweeper/Files/";
+    public static String MAIN_ICON = "/com/example/mines_sweeper/Icons/main_icon.png";
+    public static String BOMB_ICON = "/com/example/mines_sweeper/Icons/bomb.png";
+    public static String FLAG_ICON = "/com/example/mines_sweeper/Icons/flag.png";
     public static String transparent = "-fx-background-color: transparent;";
-    public static String boldNumber = "-fx-font-weight:bold;";
+    public static String boldNumber = "-fx-font-weight: bold;";
 
 
     public static int[][] generateRandomBombPosition(int size) {
@@ -124,11 +129,8 @@ public abstract class logic {
 
         if (inputStream != null) {
             try {
-                // Convert InputStream to URI
-                URI uri = logic.class.getResource(filePath).toURI();
-
-                // Create Media object with URI
-                Media sound = new Media(uri.toString());
+                // Create Media object directly from resource URI
+                Media sound = new Media(logic.class.getResource(filePath).toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(sound);
 
                 // Set volume (0.0 - 1.0)
@@ -137,12 +139,14 @@ public abstract class logic {
                 // Optional: Handle when playback reaches the end
                 mediaPlayer.setOnEndOfMedia(mediaPlayer::stop);
 
-                // Play the sound
-                mediaPlayer.play();
-                System.out.println("sound");
+                // Play the sound on JavaFX Application Thread
+                Platform.runLater(() -> {
+                    mediaPlayer.play();
+                    System.out.println("Sound played");
+                });
 
-            } catch (URISyntaxException e) {
-                System.err.println("Error converting URI: " + e.getMessage());
+            } catch (Exception e) {
+                System.err.println("Error playing sound: " + e.getMessage());
             }
         } else {
             System.out.println("File not found: " + filePath);

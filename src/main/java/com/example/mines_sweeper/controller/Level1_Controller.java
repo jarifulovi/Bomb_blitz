@@ -3,17 +3,14 @@ package com.example.mines_sweeper.controller;
 import com.example.mines_sweeper.gridLogic.*;
 import com.example.mines_sweeper.gridLogic.Grid.Level1_Level_Grid;
 import com.example.mines_sweeper.gridLogic.Grid.Level_Grid;
-import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -46,24 +43,25 @@ public class Level1_Controller implements Initializable {
     }
 
     @FXML
-    public void tileFlagged(MouseEvent mouseEvent){
+    public void tilesFlagged(MouseEvent mouseEvent){
 
         if(isGameOver) return;
 
-        Button clickedButton = (Button) mouseEvent.getSource();
-
-        assert clickedButton != null;
-        String id = clickedButton.getId();
-        clickedRow = id.charAt(7) - '0';
-        clickedCol = id.charAt(8) - '0';
-
-        if(levelGrid.isTileClicked(clickedRow,clickedCol)){
-            System.out.println("already clicked");
-            return;
-        }
-
         if(mouseEvent.getButton() == MouseButton.SECONDARY){
+            Button clickedButton = (Button) mouseEvent.getSource();
+
+            assert clickedButton != null;
+            String id = clickedButton.getId();
+            clickedRow = id.charAt(7) - '0';
+            clickedCol = id.charAt(8) - '0';
+
+            if(levelGrid.isTileClicked(clickedRow,clickedCol)){
+                System.out.println("already clicked");
+                return;
+            }
+
             levelGrid.changeTileFlagged(gridPane,clickedRow,clickedCol);
+            levelGrid.displayGrid();
         }
 
     }
@@ -89,7 +87,7 @@ public class Level1_Controller implements Initializable {
         }
 
         if(levelGrid.isTileFLagged(clickedRow,clickedCol)){
-            levelGrid.changeTileUnclicked(clickedRow,clickedCol);
+            levelGrid.changeTileUnclicked(gridPane,clickedRow,clickedCol);
             return;
         }
 
@@ -110,7 +108,6 @@ public class Level1_Controller implements Initializable {
             levelGrid.bombAndLosePanelView(gridPane,event,level,timer.getElapsedTime());
 
         }
-
         else {
             // valid tile clicked
 
@@ -129,7 +126,6 @@ public class Level1_Controller implements Initializable {
 
         }
         firstClick = false;
-        // For debugging purpose
         levelGrid.displayGrid();
     }
 

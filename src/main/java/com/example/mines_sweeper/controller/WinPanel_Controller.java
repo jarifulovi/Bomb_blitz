@@ -52,15 +52,12 @@ public class WinPanel_Controller {
            // save to file and load main menu
             System.out.println("Name : "+ name+" Time : "+time+" level : "+level);
             highestScoreManager.saveHighestScore(name,level,time);
-            logic.loadFxml("mainPage.fxml",event);
+            logic.loadFxml(logic.MAINPAGE,event);
         }
     }
     private boolean checkNameValidity(String name){
         // name should be at least 3 character
         return name.length()>=3;
-    }
-    private void loadMainMenu(){
-
     }
 
 }

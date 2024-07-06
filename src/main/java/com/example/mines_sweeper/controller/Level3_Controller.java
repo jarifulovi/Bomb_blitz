@@ -62,6 +62,10 @@ public class Level3_Controller implements Initializable {
             System.out.println("already clicked");
             return;
         }
+        if(levelGrid.isTileFLagged(clickedRow,clickedCol)){
+            levelGrid.changeTileUnclicked(gridPane,clickedRow,clickedCol);
+            return;
+        }
 
 
         if(firstClick){
@@ -79,9 +83,7 @@ public class Level3_Controller implements Initializable {
 
             levelGrid.bombAndLosePanelView(gridPane,event,level,timer.getElapsedTime());
         }
-        else if(levelGrid.isTileFLagged(clickedRow,clickedCol)){
-            levelGrid.changeTileUnclicked(clickedRow,clickedCol);
-        }
+
         else {
             // valid tile clicked
 

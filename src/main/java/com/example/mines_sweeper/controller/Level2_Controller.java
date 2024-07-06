@@ -59,6 +59,10 @@ public class Level2_Controller implements Initializable {
             System.out.println("already clicked");
             return;
         }
+        if(levelGrid.isTileFLagged(clickedRow,clickedCol)){
+            levelGrid.changeTileUnclicked(gridPane,clickedRow,clickedCol);
+            return;
+        }
 
 
         if(firstClick){
@@ -76,9 +80,7 @@ public class Level2_Controller implements Initializable {
 
             levelGrid.bombAndLosePanelView(gridPane,event,level,timer.getElapsedTime());
         }
-        else if(levelGrid.isTileFLagged(clickedRow,clickedCol)){
-            levelGrid.changeTileUnclicked(clickedRow,clickedCol);
-        }
+
         else {
             // valid tile clicked
 
@@ -94,7 +96,7 @@ public class Level2_Controller implements Initializable {
             timer.stop();
             System.out.println("Time : "+timer.getElapsedTime());
             isGameOver = true;
-            logic.loadFxmlModal("winPanel.fxml",event,level,timer.getElapsedTime());
+            logic.loadFxmlModal(logic.WINPANEL,event,level,timer.getElapsedTime());
             // save it in a file further with name
 
         }

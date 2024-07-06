@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static com.example.mines_sweeper.gridLogic.logic.SCORE_DIRECTORY;
+
 public class HighestScoreManager {
 
-    String SCORE_DIRECTORY = "src/main/resources/com/example/mines_sweeper/Files/";
+
     public void saveHighestScore(String name,int level,double time){
 
         String filePath = SCORE_DIRECTORY + "highestScore" + level + ".txt";

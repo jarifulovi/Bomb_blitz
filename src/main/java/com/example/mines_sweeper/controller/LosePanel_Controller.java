@@ -36,13 +36,13 @@ public class LosePanel_Controller {
         String fxmlFile = null;
         switch (level) {
             case 1:
-                fxmlFile = "level_1_grid.fxml";
+                fxmlFile = logic.LEVEL1FXML;
                 break;
             case 2:
-                fxmlFile = "level_2_grid.fxml";
+                fxmlFile = logic.LEVEL2FXML;
                 break;
             case 3:
-                fxmlFile = "level_3_grid.fxml";
+                fxmlFile = logic.LEVEL3FXML;
                 break;
         }
 
@@ -63,7 +63,7 @@ public class LosePanel_Controller {
     }
     public void exit(ActionEvent event){
         // Goes to main menu fxml controller
-        logic.loadFxml("mainPage.fxml",event);
+        logic.loadFxml(logic.MAINPAGE,event);
     }
 
 }

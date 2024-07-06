@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="high_score_ap" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mines_sweeper.controller.HighScore_Controller">
+   <children>
+      <Label layoutX="212.0" layoutY="5.0" prefHeight="81.0" prefWidth="179.0" text="LeaderBoard">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Button fx:id="high_score_button1" layoutX="98.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="5X5" />
+      <Button fx:id="high_score_button2" layoutX="264.0" layoutY="86.0" mnemonicParsing="false" text="10X10" />
+      <Button fx:id="high_score_button3" layoutX="439.0" layoutY="86.0" mnemonicParsing="false" text="15X15" />
+      <Label fx:id="high_score_label" alignment="CENTER" contentDisplay="CENTER" layoutX="153.0" layoutY="154.0" prefHeight="215.0" prefWidth="286.0">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Button fx:id="high_score_back_button" layoutX="29.0" layoutY="33.0" mnemonicParsing="false" text="Back" />
+   </children>
+</AnchorPane>
