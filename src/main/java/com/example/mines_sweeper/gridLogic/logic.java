@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.MenuItem;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -93,12 +94,14 @@ public abstract class logic {
         String color = logic.generateRandomColor();
         double fontSize;
 
+
         if(size == 5)       fontSize = 48;
         else if(size == 10) fontSize = 12;
         else                fontSize = 12;
 
         String css = String.format("-fx-text-fill: %s; -fx-font-size: %.1fpt;%s%s", color, fontSize,logic.boldNumber,logic.transparent);
         button.setStyle(css);
+
     }
 
     public static int generateNewRandomPosition(int size,int prePos){
@@ -122,35 +125,6 @@ public abstract class logic {
         else if(value == 3) return "#b8860b";
         else                return "black";
 
-    }
-    public static void bombSound() {
-        String filePath = "/com/example/mines_sweeper/Sounds/mixkit-8-bit-bomb-explosion-2811.mp3";
-        InputStream inputStream = logic.class.getResourceAsStream(filePath);
-
-        if (inputStream != null) {
-            try {
-                // Create Media object directly from resource URI
-                Media sound = new Media(logic.class.getResource(filePath).toString());
-                MediaPlayer mediaPlayer = new MediaPlayer(sound);
-
-                // Set volume (0.0 - 1.0)
-                mediaPlayer.setVolume(0.8);
-
-                // Optional: Handle when playback reaches the end
-                mediaPlayer.setOnEndOfMedia(mediaPlayer::stop);
-
-                // Play the sound on JavaFX Application Thread
-                Platform.runLater(() -> {
-                    mediaPlayer.play();
-                    System.out.println("Sound played");
-                });
-
-            } catch (Exception e) {
-                System.err.println("Error playing sound: " + e.getMessage());
-            }
-        } else {
-            System.out.println("File not found: " + filePath);
-        }
     }
 
 

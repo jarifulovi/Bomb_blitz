@@ -51,7 +51,8 @@ public class Level_Grid {
     }
     public void setTextOnButton(Button button, int row, int col){
 
-
+        // If the button set any graphics
+        button.setGraphic(null);
         logic.cssButtonNumbers(button,size);
         int number = getGridNumber(row,col);
         button.setText(String.valueOf(number));
@@ -124,8 +125,6 @@ public class Level_Grid {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        logic.bombSound();
     }
 
     public void setFlagImage(GridPane gridPane, int row, int col) {
@@ -141,26 +140,23 @@ public class Level_Grid {
             for (Node node : childrenCopy) {
                 Integer rowIndex = GridPane.getRowIndex(node);
                 Integer colIndex = GridPane.getColumnIndex(node);
-                if (rowIndex != null && colIndex != null && rowIndex == row && colIndex == col && node instanceof Button) {
-                    Button button = (Button) node;
+                if (rowIndex != null && colIndex != null && rowIndex == row && colIndex == col && node instanceof Button button) {
                     double width = button.getWidth();
                     double height = button.getHeight();
 
                     // Create ImageView with the flag image
                     ImageView imageView = new ImageView(flagImage);
-                    imageView.setFitWidth(width);
-                    imageView.setFitHeight(height);
+
+                    double fitWidth = width*((double) 5 /size)*0.8;
+                    double fitHeight = height*((double) 5 /size)*0.8;
+                    imageView.setFitWidth(fitWidth);
+                    imageView.setFitHeight(fitHeight);
 
                     // Set the graphic of the button
                     button.setGraphic(imageView);
 
-                    // Set preferred size of the button to match the image size
-                    button.setPrefSize(width, height);
-                    button.setMaxSize(width, height);
-                    button.setMinSize(width, height);
-
                     // Ensure only the image is displayed
-                    button.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    //button.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                     return;
                 }
             }
@@ -181,7 +177,8 @@ public class Level_Grid {
                 Integer rowIndex = GridPane.getRowIndex(node);
                 Integer colIndex = GridPane.getColumnIndex(node);
                 if (rowIndex != null && colIndex != null && rowIndex == row && colIndex == col && node instanceof Button button) {
-                    button.getGraphic().setVisible(false);
+                    button.setGraphic(null);
+                    System.out.println("set null");
                     return;
                 }
             }
@@ -216,6 +213,7 @@ public class Level_Grid {
 
 
             for(int i=0;i<adjacentZeroButtons.length;i++){
+
                 setTextOnButton(adjacentZeroButtons[i],adjacentZero.get(i)[0],adjacentZero.get(i)[1]);
             }
             // make all the buttons clicked

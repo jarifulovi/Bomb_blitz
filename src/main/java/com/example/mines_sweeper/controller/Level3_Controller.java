@@ -12,6 +12,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
@@ -40,6 +42,30 @@ public class Level3_Controller implements Initializable {
         firstClick = true;
         isGameOver = false;
         levelGrid.displayGrid();
+    }
+
+    @FXML
+    public void tilesFlagged(MouseEvent mouseEvent){
+
+        if(isGameOver) return;
+
+        if(mouseEvent.getButton() == MouseButton.SECONDARY){
+            Button clickedButton = (Button) mouseEvent.getSource();
+
+            assert clickedButton != null;
+            String id = clickedButton.getId();
+            clickedRow = Integer.parseInt(id.substring(7,8),16);
+            clickedCol = Integer.parseInt(id.substring(8,9),16);
+
+            if(levelGrid.isTileClicked(clickedRow,clickedCol)){
+                System.out.println("already clicked");
+                return;
+            }
+
+            levelGrid.changeTileFlagged(gridPane,clickedRow,clickedCol);
+            levelGrid.displayGrid();
+        }
+
     }
     @FXML
     public void tilesClicked(ActionEvent event){

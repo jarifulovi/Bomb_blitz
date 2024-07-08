@@ -39,7 +39,6 @@ public class Level1_Controller implements Initializable {
         timer = new Timer();
         firstClick = true;
         isGameOver = false;
-        levelGrid.displayGrid();
     }
 
     @FXML
