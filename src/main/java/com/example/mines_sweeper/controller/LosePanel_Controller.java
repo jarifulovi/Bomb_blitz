@@ -33,18 +33,12 @@ public class LosePanel_Controller {
     public void playAgain(ActionEvent event){
 
         // Check level and load its FXML
-        String fxmlFile = null;
-        switch (level) {
-            case 1:
-                fxmlFile = logic.LEVEL1FXML;
-                break;
-            case 2:
-                fxmlFile = logic.LEVEL2FXML;
-                break;
-            case 3:
-                fxmlFile = logic.LEVEL3FXML;
-                break;
-        }
+        String fxmlFile = switch (level) {
+            case 1 -> logic.LEVEL1FXML;
+            case 2 -> logic.LEVEL2FXML;
+            case 3 -> logic.LEVEL3FXML;
+            default -> null;
+        };
 
         if (fxmlFile != null) {
             try {

@@ -3,18 +3,14 @@ package com.example.mines_sweeper.gridLogic.Grid;
 import com.example.mines_sweeper.gridLogic.AdjacentZeroUtil;
 import com.example.mines_sweeper.gridLogic.logic;
 import javafx.animation.PauseTransition;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 
@@ -76,11 +72,15 @@ public class Level_Grid {
         grid[row][col] = logic.clicked;
     }
     public void changeTileFlagged(GridPane gridPane,int row,int col){
+
+        if(grid[row][col] == logic.flagged) return;
+
         grid[row][col] = logic.flagged;
         setFlagImage(gridPane,row,col);
     }
     public void changeTileUnclicked(GridPane gridPane,int row,int col){
 
+        // If the tile has previously a bomb
         if(gridNumbers[row][col] == -1)
             grid[row][col] = logic.bomb;
         else
@@ -178,7 +178,6 @@ public class Level_Grid {
                 Integer colIndex = GridPane.getColumnIndex(node);
                 if (rowIndex != null && colIndex != null && rowIndex == row && colIndex == col && node instanceof Button button) {
                     button.setGraphic(null);
-                    System.out.println("set null");
                     return;
                 }
             }

@@ -10,6 +10,7 @@
           <Menu mnemonicParsing="false" text="Options">
             <items>
               <MenuItem mnemonicParsing="false" text="New Game" />
+                  <MenuItem mnemonicParsing="false" text="Main menu" />
                   <MenuItem mnemonicParsing="false" text="High Score" />
                   <MenuItem mnemonicParsing="false" text="Exit" />
             </items>

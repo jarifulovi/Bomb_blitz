@@ -55,12 +55,10 @@ public class Level1_Controller implements Initializable {
             clickedCol = id.charAt(8) - '0';
 
             if(levelGrid.isTileClicked(clickedRow,clickedCol)){
-                System.out.println("already clicked");
                 return;
             }
 
             levelGrid.changeTileFlagged(gridPane,clickedRow,clickedCol);
-            levelGrid.displayGrid();
         }
 
     }
@@ -81,7 +79,6 @@ public class Level1_Controller implements Initializable {
 
 
         if(levelGrid.isTileClicked(clickedRow,clickedCol)){
-            System.out.println("already clicked");
             return;
         }
 
@@ -101,7 +98,6 @@ public class Level1_Controller implements Initializable {
 
 
         if(levelGrid.isContainsBomb(clickedRow,clickedCol)){
-            System.out.println("bomb!!");
             isGameOver = true;
 
             levelGrid.bombAndLosePanelView(gridPane,event,level,timer.getElapsedTime());
@@ -117,7 +113,6 @@ public class Level1_Controller implements Initializable {
 
         // checking for win
         if(levelGrid.checkForWon()){
-            System.out.println("You won!!!");
 
             timer.stop();
             isGameOver = true;
@@ -125,7 +120,6 @@ public class Level1_Controller implements Initializable {
 
         }
         firstClick = false;
-        levelGrid.displayGrid();
     }
 
 }

@@ -24,7 +24,7 @@ public class HighestScoreManager {
 
         // Sort scores based on time (lower time is better)
         if(scores.size() > 1) {
-            Collections.sort(scores, (s1, s2) -> {
+            scores.sort((s1, s2) -> {
                 double time1 = Double.parseDouble(s1.split(" ")[1]);
                 double time2 = Double.parseDouble(s2.split(" ")[1]);
                 return Double.compare(time1, time2);
@@ -78,16 +78,5 @@ public class HighestScoreManager {
             // Handle file IO exception
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args){
-
-        HighestScoreManager highestScoreManager = new HighestScoreManager();
-
-        highestScoreManager.saveHighestScore("player7",1,11.7493);
-        highestScoreManager.saveHighestScore("player7",1,13.4493);
-        highestScoreManager.saveHighestScore("player7",1,26.7493);
-        highestScoreManager.saveHighestScore("player7",1,29.7493);
-
     }
 }

@@ -49,8 +49,7 @@ public class WinPanel_Controller {
         String name = nameField.getText();
 
         if(checkNameValidity(name)){
-           // save to file and load main menu
-            System.out.println("Name : "+ name+" Time : "+time+" level : "+level);
+            // save to file and load main menu
             highestScoreManager.saveHighestScore(name,level,time);
             logic.loadFxml(logic.MAINPAGE,event);
         }

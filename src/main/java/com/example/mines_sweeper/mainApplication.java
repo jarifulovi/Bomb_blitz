@@ -9,11 +9,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
-// How to play needs to implement ( Only contain text )
-// Design css for winPanel and losePanel
-
-
 public class mainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {

@@ -39,6 +39,9 @@ public class MenuManager {
                     logic.loadFxmlMenu(logic.LEVEL3FXML,event);
 
                 break;
+            case "Main menu" :
+                logic.loadFxmlMenu(logic.MAINPAGE,event);
+                break;
             case "High Score" :
                 logic.loadFxmlMenu(logic.HIGHSCORE,event);
                 break;
@@ -46,10 +49,10 @@ public class MenuManager {
                 Platform.exit();
                 break;
             case "How to play" :
-                System.out.println("how to play");
+                logic.loadFxmlMenu(logic.HOWTOPLAY,event);
                 break;
             case "About" :
-                System.out.println("about us");
+                logic.loadFxmlMenu(logic.ABOUT,event);
                 break;
         }
     }

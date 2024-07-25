@@ -19,9 +19,9 @@ import java.util.ResourceBundle;
 
 public class Level2_Controller implements Initializable {
 
-    public Level_Grid levelGrid;
+    private Level_Grid levelGrid;
     private MenuManager menuManager;
-    public Timer timer;
+    private Timer timer;
     public int level = 2;
     public int clickedRow,clickedCol;
     public boolean isGameOver;
@@ -38,7 +38,6 @@ public class Level2_Controller implements Initializable {
         timer = new Timer();
         firstClick = true;
         isGameOver = false;
-        levelGrid.displayGrid();
     }
 
     @FXML
@@ -55,12 +54,10 @@ public class Level2_Controller implements Initializable {
             clickedCol = id.charAt(8) - '0';
 
             if(levelGrid.isTileClicked(clickedRow,clickedCol)){
-                System.out.println("already clicked");
                 return;
             }
 
             levelGrid.changeTileFlagged(gridPane,clickedRow,clickedCol);
-            levelGrid.displayGrid();
         }
 
     }
@@ -82,7 +79,6 @@ public class Level2_Controller implements Initializable {
 
 
         if(levelGrid.isTileClicked(clickedRow,clickedCol)){
-            System.out.println("already clicked");
             return;
         }
         if(levelGrid.isTileFLagged(clickedRow,clickedCol)){
@@ -101,7 +97,6 @@ public class Level2_Controller implements Initializable {
         }
 
         if(levelGrid.isContainsBomb(clickedRow,clickedCol)){
-            System.out.println("bomb!!");
             isGameOver = true;
 
             levelGrid.bombAndLosePanelView(gridPane,event,level,timer.getElapsedTime());
@@ -117,17 +112,14 @@ public class Level2_Controller implements Initializable {
 
         // checking for win
         if(levelGrid.checkForWon()){
-            System.out.println("You won!!!");
             // count the time
             timer.stop();
-            System.out.println("Time : "+timer.getElapsedTime());
             isGameOver = true;
             logic.loadFxmlModal(logic.WINPANEL,event,level,timer.getElapsedTime());
             // save it in a file further with name
 
         }
         firstClick = false;
-        levelGrid.displayGrid();
     }
 
 }

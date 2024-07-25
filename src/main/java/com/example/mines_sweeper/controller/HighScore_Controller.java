@@ -1,6 +1,5 @@
 package com.example.mines_sweeper.controller;
 
-import com.example.mines_sweeper.gridLogic.HighestScoreManager;
 import com.example.mines_sweeper.gridLogic.logic;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

@@ -3,26 +3,15 @@ package com.example.mines_sweeper.gridLogic;
 import com.example.mines_sweeper.controller.LosePanel_Controller;
 import com.example.mines_sweeper.controller.WinPanel_Controller;
 import com.example.mines_sweeper.mainApplication;
-import javafx.animation.PauseTransition;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.MenuItem;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Random;
 
 public abstract class logic {
@@ -38,6 +27,8 @@ public abstract class logic {
     public static String WINPANEL = "winPanel.fxml";
     public static String MAINPAGE = "mainPage.fxml";
     public static String HIGHSCORE = "high_score.fxml";
+    public static String HOWTOPLAY = "how_to_play.fxml";
+    public static String ABOUT = "aboutPanel.fxml";
     public static String SCORE_DIRECTORY = "src/main/resources/com/example/mines_sweeper/Files/";
     public static String MAIN_ICON = "/com/example/mines_sweeper/Icons/main_icon.png";
     public static String BOMB_ICON = "/com/example/mines_sweeper/Icons/bomb.png";
@@ -166,11 +157,11 @@ public abstract class logic {
             Parent root = loader.load();
 
 
-            if(fxmlFile.equals("losePanel.fxml")) {
+            if(fxmlFile.equals(LOSEPANEL)) {
                 LosePanel_Controller losePanelController = loader.getController();
                 losePanelController.setLevel(lvl);
             }
-            else if(fxmlFile.equals("winPanel.fxml")){
+            else if(fxmlFile.equals(WINPANEL)){
                 WinPanel_Controller winPanelController = loader.getController();
                 winPanelController.setInit(lvl,time);
             }
