@@ -187,14 +187,14 @@ public class Level_Grid {
     }
 
 
-    public void bombAndLosePanelView(GridPane gp, ActionEvent e,int lvl,double time){
+    public void bombAndLosePanelView(GridPane gp, ActionEvent event,int lvl,double time){
 
         displayBombs(gp);
 
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
         pause.setOnFinished(event1 -> {
             // Code to execute after the delay (e.g., start game, proceed to next step)
-            logic.loadFxmlModal(logic.LOSEPANEL,e,lvl,time);
+            logic.loadFxmlModal(logic.LOSEPANEL,event,lvl,time);
         });
         pause.play();
     }

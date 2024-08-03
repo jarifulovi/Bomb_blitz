@@ -45,5 +45,8 @@ public class MainPage_Controller implements Initializable {
     private void setBackground(){
 
         mainPageAnchorPane.setStyle("-fx-background-color: #BFB7B7;");
+        level1Button.getStyleClass().add("button-19");
+        level2Button.getStyleClass().add("button-19");
+        level3Button.getStyleClass().add("button-19");
     }
 }

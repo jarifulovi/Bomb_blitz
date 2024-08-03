@@ -24,6 +24,7 @@ public class Level1_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        gridMenu.setStyle("-fx-background-color: #B0AAAA");
         gamePlay = new GamePlay(level,gridPane,gridMenu);
     }
 

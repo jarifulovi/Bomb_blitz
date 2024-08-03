@@ -28,20 +28,16 @@ public class HighScore_Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        set_css();
+        high_score_ap.setStyle("-fx-background-color: #808080;");
+        high_score_label.setStyle("-fx-background-color: #A0A0A0");
+        high_score_button1.getStyleClass().add("button-29");
+        high_score_button2.getStyleClass().add("button-29");
+        high_score_button3.getStyleClass().add("button-29");
+        high_score_back_button.getStyleClass().add("button-29");
         high_score_button1.setOnAction(event -> show_high_score(1));
         high_score_button2.setOnAction(event -> show_high_score(2));
         high_score_button3.setOnAction(event -> show_high_score(3));
         high_score_back_button.setOnAction(event -> logic.loadFxml(logic.MAINPAGE,event));
-    }
-    private void set_css(){
-
-        high_score_ap.setStyle("-fx-background-color: #808080;");
-        high_score_label.setStyle("-fx-background-color: #A0A0A0");
-        high_score_button1.setStyle("-fx-background-color: #E0E0E0");
-        high_score_button2.setStyle("-fx-background-color: #E0E0E0");
-        high_score_button3.setStyle("-fx-background-color: #E0E0E0");
-        high_score_back_button.setStyle("-fx-background-color: #E0E0E0");
     }
 
     private void show_high_score(int level){

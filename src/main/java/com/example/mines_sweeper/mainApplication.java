@@ -17,7 +17,7 @@ public class mainApplication extends Application {
         stage.setTitle("Bomb Blitz");
         stage.setScene(scene);
 
-
+        logic.addCSSInScene(scene);
         // Load application icon
         Image icon = new Image(mainApplication.class.getResourceAsStream(logic.MAIN_ICON));
         stage.getIcons().add(icon);

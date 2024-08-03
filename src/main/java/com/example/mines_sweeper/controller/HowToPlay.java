@@ -41,6 +41,7 @@ public class HowToPlay implements Initializable {
         textArea.setWrapText(true);
         textArea.setEditable(false);
 
+        backButton.getStyleClass().add("button-29");
         backButton.setOnAction(event -> logic.loadFxml(logic.MAINPAGE,event));
 
     }

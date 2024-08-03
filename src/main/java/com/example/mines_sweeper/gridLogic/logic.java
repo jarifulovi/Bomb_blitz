@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Random;
 
 public abstract class logic {
@@ -29,6 +30,7 @@ public abstract class logic {
     public static String HIGHSCORE = "high_score.fxml";
     public static String HOWTOPLAY = "how_to_play.fxml";
     public static String ABOUT = "aboutPanel.fxml";
+    public static String CSS_FILE = "buttonUI.css";
     public static String SCORE_DIRECTORY = "src/main/resources/com/example/mines_sweeper/Files/";
     public static String MAIN_ICON = "/com/example/mines_sweeper/Icons/main_icon.png";
     public static String BOMB_ICON = "/com/example/mines_sweeper/Icons/bomb.png";
@@ -117,7 +119,10 @@ public abstract class logic {
         else                return "black";
 
     }
-
+    public static void addCSSInScene(Scene scene){
+        String cssPath = CSS_FILE;
+        scene.getStylesheets().add(Objects.requireNonNull(mainApplication.class.getResource(cssPath)).toExternalForm());
+    }
 
     // ********** Loading fxml methods ****************
 
@@ -126,6 +131,7 @@ public abstract class logic {
             FXMLLoader loader = new FXMLLoader(mainApplication.class.getResource(fxmlFile));
             Parent root = loader.load();
             Scene scene = new Scene(root);
+            addCSSInScene(scene);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.setTitle("Bomb Blitz");
@@ -139,6 +145,7 @@ public abstract class logic {
             FXMLLoader loader = new FXMLLoader(mainApplication.class.getResource(fxmlFile));
             Parent root = loader.load();
             Scene scene = new Scene(root);
+            addCSSInScene(scene);
 
             // Get the Stage from the MenuItem's Window
             MenuItem menuItem = (MenuItem) event.getSource();
@@ -167,6 +174,7 @@ public abstract class logic {
             }
 
             Scene scene = new Scene(root);
+            addCSSInScene(scene);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.setTitle("Bomb Blitz");

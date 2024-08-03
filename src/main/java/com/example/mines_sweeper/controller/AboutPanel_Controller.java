@@ -29,6 +29,7 @@ public class AboutPanel_Controller implements Initializable {
         aboutLabel.setText(text);
         aboutLabel.setWrapText(true);
 
+        backButton.getStyleClass().add("button-29");
         backButton.setOnAction(event -> logic.loadFxml(logic.MAINPAGE,event));
     }
 }

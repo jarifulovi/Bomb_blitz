@@ -6,8 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class WinPanel_Controller {
+
+    @FXML
+    public AnchorPane winPanelAnchorPane;
     @FXML
     public Label you_won_label,timeLabel;
     public TextField nameField;
@@ -21,6 +25,7 @@ public class WinPanel_Controller {
     public void setInit(int lvl, double time){
         this.level = lvl;
         this.time = time;
+        changeWinLabelColor();
         setTimeLabel();
         setNameField();
         highestScoreManager = new HighestScoreManager();
@@ -28,6 +33,7 @@ public class WinPanel_Controller {
 
     public void changeWinLabelColor(){
         // change color of you_won_label
+        winPanelAnchorPane.setStyle("-fx-background-color : #B0AAAA");
     }
     private void setTimeLabel() {
         timeLabel.setText(String.format("%.2f", time));
@@ -36,12 +42,6 @@ public class WinPanel_Controller {
         // Set the attributes for the nameField
         nameField.setPromptText("at least 3 char");
 
-        // Attach event listener to restrict input to alphabetic characters
-        nameField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("[a-zA-Z]*")) {
-                nameField.setText(oldValue);
-            }
-        });
     }
     @FXML
     public void nameEntered(ActionEvent event){
